@@ -1,0 +1,87 @@
+@import 'https://fonts.googleapis.com/css?family=Crimson+Text|Open+Sans';
+html {
+    color: #0A0908;
+}
+body {
+    font-family: 'Crimson Text', serif;
+    font-size: 3rem;
+    background: #F2F4F3;
+}
+h1 {
+    font-family: 'Crimson Text', serif;
+    font-size: 6rem;
+}
+a .btn {
+    color: #F2F4F3;
+}
+a:hover {
+    text-decoration: none;
+    color: #F2F4F3;
+}
+table a{
+    color: #49111C;
+    font-weight: bold;
+    font-size:2.2rem;
+}
+td {
+    min-width: 20rem;
+    font-size: 2rem;
+}
+.btn {
+    width: 18rem;
+    margin-top: 4rem;
+    font-size: 2rem;
+}
+.btn:focus {
+    outline: none;
+}
+#random:hover,
+#search:hover {
+    background-color: #49111C;
+    color: #F2F4F3;
+}
+#random {
+    background-color: #A9927D;
+    border-color: #765F4A;
+}
+#search {
+    background-color: #5E503F;
+    border-color: #2B1D0C;
+}
+.no-results {
+    font-size: 4rem;
+    margin-top: 4rem;
+}
+.form-control {
+    font-size:2rem;
+}
+.search-container {
+    margin-top: 4rem;
+}
+.fa-chevron-right {
+    font-size: 28px;
+    padding: 4px 0;
+}
+.fa-chevron-right:hover {
+    cursor: pointer;
+    color: darkgrey;
+}
+.table-striped>tbody>tr {
+    background-color: #F2F4F3;
+}
+.table-striped>tbody>tr:nth-of-type(odd) {
+    background-color: #D9DBDA;
+}
+.table-hover>tbody>tr:hover {
+    background-color: #A9927D;
+}
+
+@media (min-width:280px) {
+    td {
+        min-width: 10rem;
+}
+@media (min-width:720px){
+    td {
+        min-width: 20rem;
+    }
+}

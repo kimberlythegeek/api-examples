@@ -1,0 +1,29 @@
+<html>
+  <head>
+  </head>
+  <body>
+    <table id="results">
+    </table>
+    <script src="jquery.min.js"></script>
+    <script>
+    $.getJSON('https://en.wikipedia.org/w/api.php?action=opensearch&callback=?&suggest=true&search=monty+python', function(json){
+      console.log(json);
+      // If results are found
+      if(json[1].length > 0) {
+        // Titles of Results
+        var title = json[1];
+        // Descriptions of Results
+        var description = json[2];
+        // Links to Results
+        var link = json[3];
+
+        // Iterate through results
+        for(var i=0; i<json[1].length; i++) {
+          $('#results').append('<tr><td>' + title[i] + '</td><td>' + description[i] + '</td><td><a href="' + link[i] + '">View Article</a></td></tr>');
+        }
+      }
+      else console.log('results not found');
+    });
+    </script>
+  </body>
+</html>

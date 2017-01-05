@@ -1,0 +1,66 @@
+<html>
+  <head>
+
+  </head>
+  <body>
+    <table id="results">
+    </table>
+    <script>
+    // Credit to @gf3 (Gianni Chiapetta) for this snippet: https://github.com/gf3
+    
+    var loadJSONP = (function(){
+      'use strict';
+
+      var unique = 0;
+      return function(url, callback, context) {
+        // INIT
+        var name = "_jsonp_" + unique++;
+        if (url.match(/\?/)) url += "&callback="+name;
+        else url += "?callback="+name;
+        
+        // Create script
+        var script = document.createElement('script');
+        script.type = 'text/javascript';
+        script.src = url;
+        
+        // Setup handler
+        window[name] = function(data){
+          callback.call((context || window), data);
+          document.getElementsByTagName('head')[0].removeChild(script);
+          script = null;
+          delete window[name];
+        };
+        
+        // Load JSON
+        document.getElementsByTagName('head')[0].appendChild(script);
+      };
+    })();
+    </script>
+    <script>
+      loadJSONP(
+        'https://en.wikipedia.org/w/api.php?action=opensearch&search=monty+python',
+        function(data){
+          console.log(data);
+          // If results are found
+          if(data[1].length > 0) {
+            // Titles of Results
+            var title = data[1];
+            // Descriptions of Results
+            var description = data[2];
+            // Links to Results
+            var link = data[3];
+            // Table to Hold Results
+            var table = document.getElementById('results');
+
+            // Iterate through results
+            for(var i=0; i<data[1].length; i++) {
+              var elemHTML = '<tr><td>' + title[i] + '</td><td>' + description[i] + '</td><td><a href="' + link[i] + '">View Article</a></td></tr>';
+              document.getElementById('results').innerHTML += elemHTML;
+            }
+          }
+          else console.log('results not found');
+        }
+      );
+    </script>
+  </body>
+</html>
