@@ -1,0 +1,1 @@
+Example code used in [How the #$@& Do I Use an API?! – Wikipedia API Basics](http://kimberlythegeek.com/wikipedia-api-basics/)
